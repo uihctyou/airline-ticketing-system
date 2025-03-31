@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: airline-config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/uihctyou/airline-ticketing-system-config-repo.git
+          search-paths: '{application}'  # Finding file by service name
+          default-label: master
+          username: account
+          password: password

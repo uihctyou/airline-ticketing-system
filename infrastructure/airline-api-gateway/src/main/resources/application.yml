@@ -1,0 +1,12 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: airline-flight-service
+          uri: lb://airline-flight-service
+          predicates:
+            - Path=/api/flights/**
+        - id: airline-booking-service
+          uri: lb://airline-booking-service
+          predicates:
+            - Path=/api/bookings/**

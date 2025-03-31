@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>io.github.uihctyou</groupId>
+	<artifactId>airline-ticketing-system</artifactId>
+	<version>1.0.0</version>
+	<name>airline-ticketing-system</name>
+	<packaging>pom</packaging>
+	<description>>airline-ticketing-system</description>
+	<developers>
+		<developer>
+			<name>Tyou</name>
+		</developer>
+	</developers>
+
+	<modules>
+		<!-- Infrastructure Layer 基础设施模块 -->
+		<module>infrastructure/airline-eureka-server</module>
+		<module>infrastructure/airline-config-server</module>
+		<module>infrastructure/airline-api-gateway</module>
+
+		<!-- Business Services Layer 业务服务模块 -->
+		<module>services/airline-flight-service</module>
+		<module>services/airline-booking-service</module>
+		<module>services/airline-payment-service</module>
+
+		<!-- Shared Components 公共模块 -->
+		<module>common/airline-common</module>
+	</modules>
+
+	<properties>
+		<java.version>17</java.version>
+		<spring-boot.version>3.4.4</spring-boot.version>
+		<spring-cloud.version>2024.0.1</spring-cloud.version>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<!-- gRPC -->
+			<dependency>
+				<groupId>net.devh</groupId>
+				<artifactId>grpc-server-spring-boot-starter</artifactId>
+				<version>2.14.0.RELEASE</version>
+			</dependency>
+
+			<!-- Swagger -->
+			<dependency>
+				<groupId>org.springdoc</groupId>
+				<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+				<version>2.3.0</version>
+			</dependency>
+
+			<!-- JWT -->
+			<dependency>
+				<groupId>io.jsonwebtoken</groupId>
+				<artifactId>jjwt-api</artifactId>
+				<version>0.12.3</version>
+			</dependency>
+
+			<!-- Spring Boot Dependencies Management (依赖管理)-->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>${spring-boot.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+			<!-- Spring Cloud Dependencies Management (依赖管理) -->
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+			<!-- Common Dependency 公共模块依赖 -->
+			<dependency>
+				<groupId>io.github.uihctyou</groupId>
+				<artifactId>airline-common</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+</project>
