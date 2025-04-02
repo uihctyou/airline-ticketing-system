@@ -1,0 +1,14 @@
+# services/airline-flight-service/k8s/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: airline-flight-service
+spec:
+  selector:
+    app: airline-flight-service  # 匹配 Deployment 的标签
+  ports:
+    - protocol: TCP
+      port: 80                  # 外部访问端口
+      targetPort: 8081          # 容器内端口
+---
+# services/airline-booking-service/k8s/service.yaml （同理）

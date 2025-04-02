@@ -32,7 +32,6 @@
 			<artifactId>spring-cloud-starter-openfeign</artifactId>
 		</dependency>
 
-
 		<!-- Common config -->
 		<dependency>
 			<groupId>io.github.uihctyou</groupId>

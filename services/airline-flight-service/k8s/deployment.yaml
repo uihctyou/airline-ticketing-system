@@ -1,0 +1,21 @@
+# services/airline-flight-service/k8s/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: airline-flight-service
+spec:
+  template:
+    spec:
+      containers:
+        - name: flight-service
+          image: airline-flight-service:latest
+          envFrom:
+            - secretRef:  # 敏感数据（如密码）通过 Secret 管理
+                name: flight-service-secrets
+          volumeMounts:
+            - name: config-volume
+              mountPath: /app/config
+      volumes:
+        - name: config-volume
+          configMap:
+            name: flight-service-config  # 引用 ConfigMap

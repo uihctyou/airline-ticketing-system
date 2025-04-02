@@ -15,11 +15,6 @@
 	</developers>
 
 	<modules>
-		<!-- Infrastructure Layer 基础设施模块 -->
-		<module>infrastructure/airline-eureka-server</module>
-		<module>infrastructure/airline-config-server</module>
-		<module>infrastructure/airline-api-gateway</module>
-
 		<!-- Business Services Layer 业务服务模块 -->
 		<module>services/airline-flight-service</module>
 		<module>services/airline-booking-service</module>

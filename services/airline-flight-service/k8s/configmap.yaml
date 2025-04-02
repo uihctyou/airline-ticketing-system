@@ -1,0 +1,15 @@
+# services/airline-flight-service/k8s/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: flight-service-config
+data:
+  application.yml: |  # 原 Spring Boot 配置文件内容
+    spring:
+      datasource:
+        url: jdbc:postgresql://postgres:5432/flight_db
+        username: ${DB_USERNAME}
+        password: ${DB_PASSWORD}
+    logging:
+      level:
+        root: INFO

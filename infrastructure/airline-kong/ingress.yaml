@@ -1,0 +1,26 @@
+# infrastructure/airline-kong/ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: airline-ingress
+  annotations:
+    konghq.com/strip-path: "true"  # 自动移除 URL 前缀（如 /flight-service）
+spec:
+  ingressClassName: kong
+  rules:
+    - http:
+        paths:
+          - path: /flight-service/(?<path>.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: airline-flight-service  # 后端服务名称
+                port:
+                  number: 80
+          - path: /booking-service/(?<path>.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: airline-booking-service
+                port:
+                  number: 80
